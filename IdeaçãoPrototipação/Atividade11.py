@@ -149,7 +149,7 @@ def solicitarNumeros():
     return
 
 # Execução
-solicitarNumeros()
+# solicitarNumeros()
 
 # 9. Implemente um programa que solicite um número ao usuário. Esse número representará a quantidade de valores que deverão ser solicitados, pelo seu
 # programa. Para cada valor informado pelo usuário, seu programa deverá informar o triplo do mesmo.
