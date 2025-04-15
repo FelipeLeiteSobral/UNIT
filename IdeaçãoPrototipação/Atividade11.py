@@ -151,5 +151,56 @@ def solicitarNumeros():
 # Execução
 # solicitarNumeros()
 
-# 9. Implemente um programa que solicite um número ao usuário. Esse número representará a quantidade de valores que deverão ser solicitados, pelo seu
+# 9. Implemente um programa que solicite um número ao usuário. Esse número representará a quantidade de valores que 
+# deverão ser solicitados, pelo seu
 # programa. Para cada valor informado pelo usuário, seu programa deverá informar o triplo do mesmo.
+
+def solicitarNumeros():
+    quantidade = int(input("Informe quantas vezes que deseja solicitar um número: "))
+    listaNumeros = []
+    for i in range(quantidade):
+        try:
+            numero = float(input("Informe um número: "))
+            listaNumeros.append(numero)
+        except ValueError:
+            print("Problema na inserção!")
+    for numero in listaNumeros:
+        triploNumero = numero*3
+        print(f"O triplo de {numero} é {triploNumero}")
+    return
+
+# Execução
+# solicitarNumeros()
+   
+# 10. Faça um programa que permita ao usuário informar números enquanto os valores informados forem positivos. 
+# Ao final, informe ao usuário quantos
+# números foram digitados.
+
+def listarNumeros():
+    listaNumeros = []
+    while True:
+        try:
+            numero = float(input("Informe um número positivo para adicionar: "))
+            if numero < 0:
+                raise ValueError
+            listaNumeros.append(numero)
+        except ValueError:
+            print("O valor não é um número positivo. Portanto sairá do loop")
+            break
+    return print(listaNumeros)
+
+# Execução
+listarNumeros()
+
+# 11. Uma agência de uma cidade do interior tem, no máximo, 10.000 clientes. Desenvolva um programa que permita a 
+# entrada do número da conta, nome e
+# saldo de cada cliente. Seu programa deverá imprimir para cada conta informada, além de seu saldo, uma das 
+# mensagens: positivo ou negativo. A
+# digitação acaba no momento em que o usuário informar o número -999 como sendo número de uma conta. 
+# Ao final, deverá sair o total de clientes com
+# saldo negativo, o total de clientes da agência e o saldo da agência.
+
+# 12. Desenvolva um programa que permita ao usuário informar valores inteiros até o momento em que um valor negativo 
+# seja informado. Quando isso ocorrer,
+# informe a quantidade de números lidos, a quantidade de números que sejam múltiplos de 6 dentre os informados e a 
+# média de todos os números lidos.
