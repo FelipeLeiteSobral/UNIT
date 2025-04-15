@@ -68,12 +68,17 @@ print(estoque)
 # Imprimir quais frutas estão disponíveis e quais não estão, com base na lista de compras.
 
 
-def adicionarFrutas():
+def colocarCarrinho():
     compras = set()
     while True:
-        fruta = input("Informe a fruta que deseja inserir na sua lista de compras: ")
-        compras.append(fruta)
-        sair = input("Deseja sair da lista de compras? (S para caso queira sair) ").upper
+        fruta = input("Informe a fruta que deseja inserir na sua lista de compras: ").strip().lower().capitalize()
+        compras.add(fruta)
+        sair = input("Deseja sair da lista de compras? (S para caso queira sair) ").upper()
         if sair == "S":
             break
-            
+    for fruta in compras:
+        if fruta in estoque:
+            print(f"{fruta} está disponível")
+        else:
+            print(f"{fruta} não está disponível")
+colocarCarrinho()
