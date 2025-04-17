@@ -24,9 +24,8 @@ def avaliarNumero(numero):
     return
 
 # Execução
-
-# numero1 = inserirNumero()
-# avaliarNumero(numero1)
+numero1 = inserirNumero()
+avaliarNumero(numero1)
 
 # 2. Desenvolva um programa que solicite ao usuário o nome e senha. Caso o nome do usuário seja igual à senha, 
 # informe que a senha não está correta,
@@ -41,8 +40,7 @@ def cadastro():
     return usuario, senha
 
 # Execução
-
-# cadastro()
+cadastro()
 
 # 3. Implemente um programa para que, ao serem fornecidos o primeiro termo de uma Progressão Aritmética e a razão, 
 # seja possível calcular e exibir seu
@@ -60,7 +58,7 @@ def progressaoAritimetica(termo1, razao):
     print(listaPA)
 
 # Execução
-# progressaoAritimetica(*valoresParaPA())
+progressaoAritimetica(*valoresParaPA())
 
 
 # 4. Implemente um programa que, ao receber a razão de uma Progressão Geométrica e o valor do primeiro termo, 
@@ -82,7 +80,7 @@ def progressaoGeometrica(termo1, razao):
     print(listaPG)
 
 # Execução
-# progressaoGeometrica(*valoresParaPG())
+progressaoGeometrica(*valoresParaPG())
 
 # 5. Desenvolva um programa que deva receber o valor de uma venda e, caso o valor total desta venda seja superior 
 # a R$ 50, aplique um desconto de 18% e
@@ -97,7 +95,7 @@ def vender():
         print(f"O valor que o cliente deverá pagar é de R${valorTotalVenda}")
 
 # Execução
-# vender()
+vender()
 
 # 6. Criar um programa que solicite ao usuário, que é um professor, o valor da hora\aula, número de aulas dadas por semana e, caso o valor obtido como
 # salário mensal for inferior a R$ 1.000,00, informe ao professor que ele está isento de contribuição sindical. Para obter o salário mensal, multiplique o valor
@@ -111,8 +109,9 @@ def calcularSalario():
         return print(f"Seu salário é de R${salario:.2f} e é inferior a R$1000,00. Portanto você está isento de contribuição sindical")
     else:
         return print(f"Seu salário é de R${salario:.2f} e é superior a R$1000,00. Portanto você não está isento de contribuição sindical")
-        
-# calcularSalario()
+
+#Execução
+calcularSalario()
     
 # Crie um programa que apresente a soma acumulada de todos os valores entre 1 e 100.
 
@@ -124,7 +123,7 @@ def somarValores():
     print(f"A soma dos números dará {somatorioLista}")
 
 # Execução
-# somarValores()
+somarValores()
 
 # 8. Desenvolva um programa que solicite dez números ao usuário e, a cada número recebido, ,
 # informe seu valor ao quadrado.
@@ -149,7 +148,7 @@ def solicitarNumeros():
     return
 
 # Execução
-# solicitarNumeros()
+solicitarNumeros()
 
 # 9. Implemente um programa que solicite um número ao usuário. Esse número representará a quantidade de valores que 
 # deverão ser solicitados, pelo seu
@@ -170,7 +169,7 @@ def solicitarNumeros():
     return
 
 # Execução
-# solicitarNumeros()
+solicitarNumeros()
    
 # 10. Faça um programa que permita ao usuário informar números enquanto os valores informados forem positivos. 
 # Ao final, informe ao usuário quantos
@@ -187,7 +186,7 @@ def listarNumeros():
         except ValueError:
             print("O valor não é um número positivo. Portanto sairá do loop")
             break
-    return print(listaNumeros)
+    return print(f"{len(listaNumeros)} foram digitados")
 
 # Execução
 listarNumeros()
@@ -200,7 +199,52 @@ listarNumeros()
 # Ao final, deverá sair o total de clientes com
 # saldo negativo, o total de clientes da agência e o saldo da agência.
 
+
+clientes = dict()
+def cadastrarCliente():
+    while True:
+        if len(clientes) <= 10000:
+            numeroConta = int(input("Digite o número da conta do cliente: "))
+            nome = input("Digite o nome cliente: ")
+            saldoConta = float(input("Digite o valor que o cliente possui em conta: "))
+            clientes[numeroConta] = [nome, saldoConta]
+            sair = input("Pressione S para caso deseje sair: ").upper()
+            if sair == "S":
+                break
+        else:
+            print("A empresa atingiu o número máximo de clientes.")
+        
+    print(clientes)
+
+
+# Execução
+cadastrarCliente()
+
+
+
 # 12. Desenvolva um programa que permita ao usuário informar valores inteiros até o momento em que um valor negativo 
 # seja informado. Quando isso ocorrer,
 # informe a quantidade de números lidos, a quantidade de números que sejam múltiplos de 6 dentre os informados e a 
 # média de todos os números lidos.
+
+def trabalharNumeros():
+    listaNumeros = []
+    while True:
+        try:
+            numero = int(input("Informe um número positivo para adicionar: "))
+            if numero < 0:
+                raise ValueError
+            listaNumeros.append(numero)
+        except ValueError:
+            print("O valor não é um número positivo. Portanto sairá do loop")
+            break
+
+    print(f"{len(listaNumeros)} foram digitados")
+    for numero in listaNumeros:
+        if (numero % 6) == 0:
+            print(f"O numero {numero} é divisível por 6")
+    media = sum(listaNumeros)/len(listaNumeros)
+    print(f"A média dos valores inseridos é {media:.2f}")
+
+# Execução
+trabalharNumeros()
