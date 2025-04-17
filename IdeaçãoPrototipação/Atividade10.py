@@ -47,12 +47,12 @@ def lerVariaveis(quantidade):
     listaVariaveis = list()
     while(quantidade != 0):
         try:
-            variavel = str(input("Digite um número: "))
+            variavel = str(input("Digite uma variável: "))
             listaVariaveis.append(variavel)
             quantidade = quantidade - 1
 
         except ValueError:
-            print("Você informado incorretamente")
+            print("Valor informado incorretamente")
     return listaVariaveis
 
 def concatenarLista(lista):
@@ -66,19 +66,20 @@ listaVariaveis = lerVariaveis(2)
 print(f"A concatenação das variáveis resultará em {concatenarLista(listaVariaveis)}")
 
 # 5. Ler duas variáveis inteiras e trocar o conteúdo lido de uma pela outra. Dica : use uma terceira variável auxiliar.
-variavel1 = 1
-variavel2 = 2
+listaVariaveis = lerVariaveis(2)
+variavel1 = listaVariaveis[0]
+variavel2 = listaVariaveis[1]
 def trocar(var1, var2):
     var1, var2 = var2, var1
-    return var1, var2
+    return print(f"A primeira variável agora é {var1} e a segunda variável é {var2}")
 trocar(variavel1,variavel2)
 
 #Execução
-print(f"A primeira variável agora é {variavel1} e a segunda variável é {variavel2}")
+
 
 # 6. Ler dois números e imprimir se são ‘IGUAIS’
 def compararNumeros(lista):
-    for i in (len(lista)-1):
+    for i in range((len(lista)-1)):
         if lista[i] == lista[i+1]:
             return print(f"O número {lista[i]} e {lista[i+1]} são IGUAIS")
         else:
@@ -98,10 +99,10 @@ compararNumeros(numeros)
 
 def julgarNumero():
     numero = lerNumeros(1)
-    if (numero[0] % 0) == 0 :
-        return print(f"O número {numero} é PAR")
+    if (numero[0] % 2) == 0 :
+        return print(f"O número {numero[0]} é PAR")
     else:
-        return print(f"O número {numero} é ÍMPAR")
+        return print(f"O número {numero[0]} é ÍMPAR")
 
 #Execução
 julgarNumero()
@@ -128,17 +129,19 @@ print(f"O maior número é {max(listaNumeros)}")
 
 #Execução
 listaNumeros = lerNumeros(2)
-print(f"A ordem crescente dos números é {listaNumeros.sort()}")
+listaNumeros.sort()
+print(f"A ordem crescente dos números é {listaNumeros}")
 
 
 # 12. Ler dois números e imprimi-los em ordem decrescente e calcular e imprimir a diferença do maior pelo menor
 
 #Execução
 listaNumeros = lerNumeros(2)
-print(f"A ordem decrescente dos números é {listaNumeros.sort(reverse = True)}")
+listaNumeros.sort(reverse = True)
+print(f"A ordem decrescente dos números é {listaNumeros}")
 
 # 13. Ler três números e imprimir o menor e o maior
 
 #Execução
-listaNumeros = lerNumeros(2)
+listaNumeros = lerNumeros(3)
 print(f"O maior número é {max(listaNumeros)} e o menor é {min(listaNumeros)}")
