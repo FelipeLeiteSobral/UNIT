@@ -1,5 +1,53 @@
+import random
+
+# Função de decisão(Repetir/Parar)
+def decidirAcao(funcao):
+    funcao
+    while True:
+        opcao = input("Quer tentar novamente? (s/n): ").lower()
+        if opcao == 's':
+            funcao
+        elif opcao == 'n':
+            print("Obrigado! Até a próxima!")
+            break
+        else:
+            print("Digite 's' para sim ou 'n' para não.")
+
 # Parte 1 – Estrutura de Controle e Fluxo, Exceções e Subprogramas
 # 7. Jogo de Adivinhação com Tentativas
+def jogoAdivinhacao():
+    print("BEM-VINDO AO JOGO DE ADIVINHAÇÃO!")
+    print("Eu sorteei um número entre 1 e 10.")
+    numeroSorteado = random.randint(1, 10)
+    while(True):
+        try: 
+            tentativas = int(input("Informe quantas tentativas você deseja para adivinhar o número sorteado: "))
+            if tentativas < 0:
+                raise ValueError
+            break
+        except ValueError: 
+            print("Escolha um número adequado de tentativas!")
+    print(f"Você tem {tentativas} tentativas para adivinhar!")
+    tentativa = 1
+    while(tentativa <= tentativas):
+        print(f"\n Tentativa {tentativa}/{tentativas}")
+        try:
+            palpite = int(input("Digite seu palpite: "))
+            if palpite == numeroSorteado:
+                print(f"PARABÉNS! Você acertou na sua {tentativa}ª tentativa! O número era {numeroSorteado}!")
+                return
+            elif palpite < numeroSorteado:
+                print("Não foi dessa vez! Tente um número maior.")
+            else:
+                print("Não foi dessa vez! Tente um número menor.")
+            tentativa += 1
+        except ValueError:
+            print("Digite apenas números inteiros!")
+            continue
+    print(f"Suas tentativas acabaram. O número sorteado foi: {numeroSorteado}\n")
+
+# Execução
+decidirAcao(jogoAdivinhacao())
 
 # Parte 2: Linguagens Procedurais
 # 5. Fibonacci com Recursão
@@ -21,73 +69,6 @@ lista = Fibonacci(5)
 print(lista)
 
 # Parte 3: Programação Orientada a Objetos (Python)
-# 1. Classe Pessoa com Atributos e Métodos Básicos
-class Pessoa:
-    def __init__(self, nome, idade):
-        self.nome
-        self.idade
-    def apresentar(self):
-        print(f"Meu nome é {self.nome} e tenho {self.idade} anos")
-    
-# 2. Classe Conta Bancária
-class ContaBancaria():
-    def __init__(self, titular, saldo):
-        self.titular = titular
-        self.saldo = saldo
-    def depositar(self, valor):
-        self.saldo += valor
-        print(f"Você depositou R${valor} e seu saldo é de R${self.saldo}")
-    def sacar(self, valor):
-        if self.saldo >= valor:
-            self.saldo -= valor
-            print(f"Você sacou R${valor} e seu saldo é de R${self.saldo}")
-        else:
-            print(f"Saldo insuficiente, você tem R${self.saldo}")
-    def verSaldo(self):
-        print(f"Olá {self.nome} Seu saldo é de R${self.saldo}")
-
-# 3. Classe Retângulo com Cálculo de Área e Perímetro
-class Retangulo():
-    def __init__(self, largura, altura):
-        self.largura = largura
-        self.altura = altura
-    def area(self):
-        return self.altura * self.largura
-    def perimetro(self):
-        return 2 * (self.altura + self.largura)
-
-# 4. Sistema de Login Simples
-class Login():
-    def __init__(self, senha, usuario):
-        self.senha = senha
-        self.usuario = usuario
-    def autenticar(self, entradaSenha,entradaUsuario):
-        return self.senha == entradaSenha and self.usuario == entradaUsuario    
-
-# 5. Registro de Estudantes
-class Estudante():
-    def __init__(self, nome, matricula, cpf, idade):
-        self.nome = nome
-        self.matricula = matricula
-        self.cpf = cpf
-        self.idade = idade
-    def verDados(self):
-        print(f"Nome: {self.nome} \nMatrícula: {self.matricula} \nCPF: {self.cpf} \nIdade: {self.idade} ")
-
-# 6. Classe Produto com Estoque
-class Produto():
-    def __init__(self, estoque, nome, categoria):
-        self.nome = nome
-        self.estoque = estoque
-        self.categoria = categoria
-    def adicionarEstoque(self, quantidade):
-        self.estoque += quantidade
-    def removerEstoque(self, quantidade):
-        if self.estoque >= quantidade:
-            estoque -= quantidade
-        else:
-            print(f"Estoque insuficiente, você possui {self.estoque} de {self.nome}.")
-
 # 7. Classe Triângulo com Verificação de Tipo
 class Triangulo():
     def __init__(self, ladoA, ladoB, ladoC ):
@@ -102,3 +83,6 @@ class Triangulo():
         else:
             return "Escaleno"
 
+ 
+triangulo1 = Triangulo(3,4,5)
+print(f"O triangulo informado é considerado: Triângulo {triangulo1.tipo()}")
