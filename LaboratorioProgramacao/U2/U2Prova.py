@@ -48,23 +48,25 @@ def jogoAdivinhacao():
 
 # Execução
 decidirAcao(jogoAdivinhacao())
-
 # Parte 2: Linguagens Procedurais
 # 5. Fibonacci com Recursão
-def somaValores(primeiroValor, segundoValor):
-    soma = primeiroValor + segundoValor
-    return soma
+def somaValores(indice, lista, parada):
+    if indice < parada - 1:
+        soma = lista[indice] + lista[indice + 1]
+        lista.append(soma)
+        return somaValores((indice + 1), lista, parada)
+    else:
+        lista.remove(0)
+        return lista
 def Fibonacci(numero):
-    listaFibonacci = []
-    listaFibonacci.append(0)
-    listaFibonacci.append(1)
-    for i in range(0,numero-1):
-        primeiroTermo = listaFibonacci[i]
-        segundoTermo = listaFibonacci[i+1]
-        listaFibonacci.append(somaValores(primeiroTermo, segundoTermo))
-        i += 1
-    listaFibonacci.remove(0)
-    return listaFibonacci
+    if numero <= 0:
+        return []
+    elif numero == 1:
+        return [1]    
+    listaFibonacci = [0, 1]
+    return somaValores(0, listaFibonacci, numero)
+
+# Execução
 lista = Fibonacci(5)
 print(lista)
 
