@@ -41,6 +41,7 @@ def jogoAdivinhacao():
             tentativa += 1
         except ValueError:
             print("Digite apenas números inteiros.")
+            continue
     print(f"Suas tentativas acabaram. O número era: {numeroSorteado}\n")
 
 # Parte 2: Linguagens Procedurais
