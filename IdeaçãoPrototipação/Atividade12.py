@@ -1,3 +1,21 @@
+def menu():
+    while True:
+        try:
+            selecao = int(input("Insira qual funcionalidade você deseja:\n0. Sair\n1. Elevador\n2. Outra opção\n3. Outra opção\n-> "))
+            match selecao:
+                case 0:
+                    print("Encerrando o programa...")
+                    return
+                case 1:
+                    chamarElevador()
+                case 2:
+                    print("Você escolheu a opção 2.")
+                case 3:
+                    print("Você escolheu a opção 3.")
+                case _:
+                    print("Opção inválida. Tente novamente.")
+        except ValueError:
+            print("Por favor, insira um número inteiro.")
 # 1. Escreva um algoritmo que leia o número de andares de um prédio e, a seguir, para cada andar do prédio, 
 # leia o número de pessoas que entraram e saíram do elevador. 
 # Considere que o elevador está vazio e está subindo, os dados se referem a apenas uma subida 
@@ -8,43 +26,32 @@
 # o número de pessoas que devem sair do elevador, de modo que seja obedecido o limite de 15 passageiros. 
 # Após a entrada e saída no último andar, o
 # algoritmo deve mostrar quantas pessoas permaneceram no elevador para descer.
-quantidadeElevador = 0
-andarCorrente = 0
-def definirPredio():
+def chamarElevador():
     try: 
         numeroAndares = int(input("Informe a quantidade de andares do prédio: "))
-        listaAndares = []
-        for i in range(0, numeroAndares):          
-            listaAndares.append(i) 
     except ValueError:
-        print("Informe um valor numérico inteiro.")   
-    return numeroAndares
-
-def chamarElevador(quantidadeElevador, andarCorrente):
-    for andarCorrente in range(0, numeroAndares):
+        print("Informe um valor numérico inteiro.")
+        return
+    quantidadeElevador = 0 
+    for andarCorrente in range(numeroAndares):
         try:
             print()
-            print(f"====================== Andar: {andarCorrente} ======================")
+            print(f"===== Andar {andarCorrente} =====")
             pessoasSaindo = int(input("Quantas pessoas estão saindo do elevador? "))
-            quantidadeElevador = quantidadeElevador - pessoasSaindo
-            if quantidadeElevador < 0:
-                quantidadeElevador = 0
-                raise ValueError
+            if pessoasSaindo > quantidadeElevador:
+                print("Não podem sair mais pessoas do que há no elevador.")
+                pessoasSaindo = quantidadeElevador
+            quantidadeElevador -= pessoasSaindo
             pessoasEntrando = int(input("Quantas pessoas estão entrando no elevador? "))
-            quantidadeElevador = quantidadeElevador + pessoasEntrando
-            if  andarCorrente < 0 or andarCorrente > numeroAndares:
-                raise ValueError
+            quantidadeElevador += pessoasEntrando
             if quantidadeElevador > 15:
+                excesso = quantidadeElevador - 15
                 quantidadeElevador = 15
-                print("Lotação máxima, o elevador chegou a 15 pessoas!")
+                print(f"⚠️ Excesso de passageiros. Devem sair {excesso} pessoa(s).")
         except ValueError:
-            print("O número de pessoas do elevador não pode ficar negativo.")
+            print("Erro: Entrada inválida. Use apenas números inteiros.")
         print(f"Pessoas no elevador: {quantidadeElevador}")
-    return quantidadeElevador, andarCorrente
-
-numeroAndares = definirPredio()
-quantidadeElevador, andarCorrente = chamarElevador(quantidadeElevador, andarCorrente)
-print(quantidadeElevador)
+    print(f"\nSubida finalizada. {quantidadeElevador} pessoa(s) permanecem no elevador para descer.")
 
 # 2. Desenvolva um programa que exiba a tabuada dos números de 10 a 20, tendo como base os números de 1 a 10. 
 # Por exemplo: 10x1, 10x2, 10x3, 10x..
@@ -102,3 +109,5 @@ print(quantidadeElevador)
 # e. Mostre o código, número de horas trabalhadas, valor da hora trabalhada, salário inicial, 
 # auxílio-alimentação e o salário final (salário inicial + auxílio-
 # alimentação).
+
+menu()
